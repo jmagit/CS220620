@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemosConsola", "DemosConsola\DemosConsola.csproj", "{014D5C6D-A6BE-4AB4-B577-1FFE993845EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiBiblioteca", "MiBiblioteca\MiBiblioteca.csproj", "{BC6475B1-831C-43FD-A31B-0A1DF663DF94}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{014D5C6D-A6BE-4AB4-B577-1FFE993845EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014D5C6D-A6BE-4AB4-B577-1FFE993845EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014D5C6D-A6BE-4AB4-B577-1FFE993845EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014D5C6D-A6BE-4AB4-B577-1FFE993845EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6475B1-831C-43FD-A31B-0A1DF663DF94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6475B1-831C-43FD-A31B-0A1DF663DF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6475B1-831C-43FD-A31B-0A1DF663DF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6475B1-831C-43FD-A31B-0A1DF663DF94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
