@@ -1,7 +1,17 @@
 ﻿using System;
 
 namespace MiBiblioteca {
-    public class Calculadora {
+    public class Calculadora: IDisposable {
+        readonly int max;
+
+        public Calculadora(int max = 0) {
+            this.max = max;
+        }
+
+        public void Dispose() {
+            // throw new NotImplementedException();
+        }
+
         #region Atributos
         #endregion
         #region Métodos
