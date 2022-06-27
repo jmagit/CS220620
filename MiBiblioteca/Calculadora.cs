@@ -1,8 +1,16 @@
-﻿using System;
+﻿using MiBiblioteca.Enumeraciones;
+using System;
 
 namespace MiBiblioteca {
     public class Calculadora: IDisposable {
         readonly int max;
+
+        public Calculadora() {
+
+        }
+        public Calculadora(Color color) {
+
+        }
 
         public Calculadora(int max = 0) {
             this.max = max;
@@ -28,5 +36,15 @@ namespace MiBiblioteca {
             return a + b;
         }
         #endregion
+    }
+
+    public class CalculadoraCientifica: Calculadora, ICloneable {
+        public object Clone() {
+            throw new NotImplementedException();
+        }
+
+        public double Cuadrado(double valor) {
+            return Math.Pow(valor, 2);
+        }
     }
 }
