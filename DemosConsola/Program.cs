@@ -23,10 +23,94 @@ namespace DemosConsola {
             deSalida = 99;
             ++deSalida;
         }
+
+        public class Punto {
+            private int x, y;
+            public Punto(int x, int y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            public int X { get { return x; } }
+            public int Y { get { return y; } }
+        }
+
+        public class Contenedor: ICloneable {
+            private Dummy privado = new() { Valor = 888 };
+            private Punto punto = new Punto(10, 20);
+
+            public Punto Punto {  get { return punto; } }
+
+            public int DameDummyValor() { return privado.Valor;  }
+            public void PonDummyValor(int valor) { privado.Valor = valor;  }
+
+            public Dummy DameDummy() { return privado.Clone() as Dummy;  }
+            public Punto DamePunto() { return punto;  }
+
+            public object Clone() {
+                var rslt = base.MemberwiseClone() as Contenedor;
+                rslt.privado = this.privado.Clone() as Dummy;
+                return rslt;
+            }
+        }
+
+        public class Dummy: ICloneable {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int Valor { get; set; }
+            public String Cadena { get; set; }
+            public Dummy() { }
+
+            public Dummy(int valor) { Valor = valor; }
+            public override string ToString() {
+                return Valor.ToString();
+            }
+
+            public object Clone() {
+                return base.MemberwiseClone();
+            }
+        }
+        static public void Metodo(Dummy porValor, ref Dummy porReferencia, in Dummy deEntrada, out Dummy deSalida) {
+            porValor.Valor = 666;
+            porValor = new() { Valor = 888 };
+            deEntrada.Valor = 777;
+            if (porReferencia.Valor > deEntrada.Valor)
+                porReferencia = new() { Valor = 123 };
+            deSalida = new() { Valor = 777 };
+        }
+        static public void Metodo(int obligatorio, int porDefecto=10, int otroParametro=3) {
+        }
+        static public void Metodo(string obligatorio, params int[] resto) {
+        }
+
         static void Main(string[] args) {
-            int porValor = 0, porReferencia = 55, deEntrada = 0, deSalida = 44;
+            Metodo(obligatorio: 4, otroParametro: 4);
+            Metodo("", 3, 3, 4, 1);
+            var c = new Contenedor();
+            Console.WriteLine($"c {c.DameDummyValor()}");
+            //c.DameDummy().Valor = 111;
+            //Console.WriteLine($"Despues {c.DameDummyValor()}");
+            var cc = c.Clone() as Contenedor;
+
+            //Object o;
+            //if(c is ICloneable) {
+            //    o = (c as ICloneable).Clone();
+            //} else {
+            //    o = c;
+            //}
+
+            Console.WriteLine($"Antes cc {cc.DameDummyValor()}");
+            c.PonDummyValor(111);
+            Console.WriteLine($"Despues cc {cc.DameDummyValor()}");
+
+            //int porValor = 0, porReferencia = 55, deEntrada = 0, deSalida = 44;
+            //Console.WriteLine($"{porValor} {porReferencia} {deEntrada} {deSalida}");
+            //Metodo(porValor, ref porReferencia, in deEntrada, out deSalida);
+            //Console.WriteLine($"{porValor} {porReferencia} {deEntrada} {deSalida}");
+            Dummy porValor = new Dummy(0), porReferencia = new Dummy(55), deEntrada = new Dummy(0), deSalida = new Dummy(44);
             Console.WriteLine($"{porValor} {porReferencia} {deEntrada} {deSalida}");
-            Metodo(porValor, ref porReferencia, in deEntrada, out deSalida);
+            Metodo(porValor.Clone() as Dummy, ref porReferencia, in deEntrada, out deSalida);
             Console.WriteLine($"{porValor} {porReferencia} {deEntrada} {deSalida}");
         }
         static void Main4(string[] args) {
@@ -41,7 +125,7 @@ namespace DemosConsola {
             Enum.GetValues(typeof(DiasDeLaSemana));
             dia = (DiasDeLaSemana)Enum.Parse(typeof(DiasDeLaSemana), "Lunes");
 
-            switch(dia) {
+            switch (dia) {
                 case DiasDeLaSemana.Lunes:
                     break;
                 case DiasDeLaSemana.Domingo:
@@ -79,8 +163,8 @@ namespace DemosConsola {
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
-                 Console.WriteLine($"Dispose Personas: {Persona.NumPersonas}");
-           
+            Console.WriteLine($"Dispose Personas: {Persona.NumPersonas}");
+
             //ICRUD dao2 = new PersonaDB();
             //IModifica dao3 = new PersonaDB();
             //// ...
@@ -95,7 +179,7 @@ namespace DemosConsola {
 
             Calculadora c = new(MiBiblioteca.Enumeraciones.Color.Blanca);
             c.Suma(2, 2);
-            
+
 
             CalculadoraCientifica cc = new CalculadoraCientifica();
             cc.Suma(2, 2);

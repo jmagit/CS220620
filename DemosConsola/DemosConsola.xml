@@ -4,5 +4,10 @@
         <name>DemosConsola</name>
     </assembly>
     <members>
+        <member name="P:DemosConsola.Program.Dummy.Valor">
+            <summary>
+            
+            </summary>
+        </member>
     </members>
 </doc>

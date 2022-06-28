@@ -76,4 +76,16 @@ namespace DemosConsola.Entidades {
         private string sexo;
         public string Sexo { get { return sexo; } set { sexo = value; } }
     }
+
+    public partial class Profesor: Persona {
+        public Decimal Salario { get; set; }
+
+        public string QueEres { get { return "Soy un profesor";  } }
+    }
+
+    public class Alumno : Persona {
+        public Decimal Nota { get; set; } = 0;
+
+        public string QueEres { get { return "Soy un alumno"; } }
+    }
 }
