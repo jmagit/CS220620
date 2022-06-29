@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DemosConsola {
-    public class PersonaRepositorio : IRepositorio, IDisposable {
+    public class PersonaRepositorio : IRepositorio<Persona, int>, IDisposable {
         public void Añade(Persona persona) {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@ namespace DemosConsola {
             throw new NotImplementedException();
         }
     }
-    public class PersonaMockRepositorio : IRepositorio {
+    public class PersonaMockRepositorio : IRepositorio<Persona, int> {
         public void Añade(Persona persona) {
             throw new NotImplementedException();
         }

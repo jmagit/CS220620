@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DemosConsola {
-    public interface IRepositorio {
-        List<Persona> DameTodos();
-        Persona DameUno(int id);
-        void Añade(Persona persona);
-        void Modifica(Persona persona);
-        void Borrar(int id);
+    public interface IRepositorio<T, K> {
+        List<T> DameTodos();
+        T DameUno(K id);
+        void Añade(T item);
+        void Modifica(T item);
+        void Borrar(K id);
+    }
+    public interface IPersonaRepository: IRepositorio<Persona, int> {
+
     }
 
     public interface IConsulta {

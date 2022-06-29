@@ -2,7 +2,8 @@
 using MiBiblioteca;
 using MiBiblioteca.Enumeraciones;
 using System;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DemosConsola {
 #if DEBUG
@@ -12,25 +13,86 @@ namespace DemosConsola {
 #endif
 
         static void Main(string[] args) {
-            Persona p; // = new Persona();
-            var a = new Alumno() { Nombre = "Alumno" };
-            Console.WriteLine($"{a.dameNombre()} {a.QueEres}");
-            p = new Profesor() { Nombre = "Profe", Sexo = "no binario" };
-            Console.WriteLine($"{p.dameNombre()} {p.QueEres} {(p as Profesor).QueEres}");
-            p.dameNombre();
-            // var bebe = a.EsMayor(p); // a > p
-            //if (p.EsValido()) {
+            List<Persona> list = new List<Persona>();
+            OperacionBinaria op;
+
+            var c = new Calculadora();
+            Func<int, int, int> op2 = c.Suma;
+            Func<int, int> unaria = c.CambiaSigno;
+            Func<string, string, bool> op3;
+            Action<int, int, int> pro;
+
+            //op = c.Suma;
+            //// ...
+            //Console.WriteLine(op(2, 2));
+            //op = c.Resta;
+            //Console.WriteLine(op(2, 2));
+            Calcula(c.Suma);
+            Calcula(c.Resta);
+            op = delegate (int i, int j) { return i * j; };
+            op = (i, j) => i * j;
+            op = (i, j) => {
+                // ...
+                return i* j;
+            };
+            Console.WriteLine(op(3, 2));
+
+            //Calcula(delegate (int i, int j) { return i * j; });
+            //Calcula(c.QueHago('+'));
+            //Calcula(c.CambiaSigno);
+            var rslt = list
+                .Where(item => item.Nombre.StartsWith("P"))
+                .OrderBy(item => item.FechaNacimieto)
+                //.Select(item => item.Nombre)
+                .Select(delegate(Persona item) { return item.Nombre; })
+                .Skip(10).Take(5);
+
+        }
+
+        static void Calcula(OperacionBinaria op) {
+            Console.WriteLine(op(2, 2));
+        }
+
+            static void Genericos(string[] args) {
+            var ele = new Elemento<int, string>();
+            var ele2 = new Elemento<string, char>();
+            var t1 = ele.GetType();
+            var t2 = ele2.GetType();
+            // Console.WriteLine($"ele: {ele.GetType().FullName} ele2: {ele2.GetType().FullName}");
+            //ele.Key = 3;
+            //ele.Valor = "cad";
+            //ele2.Key = "d";
+            //ele2.Valor = 'k';
+            //var lista = new List<Persona>();
+
+            //lista.Add(new Alumno() { Nombre = "Alumno", [0] = "Programación" });
+            //lista.Add(new Profesor() { Nombre = "Profe", Sexo = "no binario" });
+
+            //Persona p; // = new Persona();
+            //var a = new Alumno() { Nombre = "Alumno", [0] = "Programación" };
+            //Console.WriteLine($"{a.dameNombre()} {a.QueEres}");
+            //p = new Profesor() { Nombre = "Profe", Sexo = "no binario" };
+            //Console.WriteLine($"{p.dameNombre()} {p.QueEres} {(p as Profesor).QueEres}");
+            //p.dameNombre();
+            //var asignatura = a[0];
+            //asignatura = a.Asignaturas[0];
+            //asignatura = a[0, "dd"];
+
+            ////var hijo = p + a;
+
+            //// var bebe = a.EsMayor(p); // a > p
+            ////if (p.EsValido()) {
+
+            ////}
+            //if (p is Profesor) {
+            //    var profe = p as Profesor;
+            //    profe.DarClase();
+            //} else if (p is Alumno alum) {
+            //    alum.HacerExamen();
+            //} else // if(p is Persona) 
+            //    {
 
             //}
-            if (p is Profesor) {
-                var profe = p as Profesor;
-                profe.DarClase();
-            } else if (p is Alumno alum) {
-                alum.HacerExamen();
-            } else // if(p is Persona) 
-                {
-
-            }
         }
         //public enum DiasDeLaSemana {
         //    Lunes = 1, Martes = 3, Miercoles, Jueves, Viernes, Sabado, Domingo
@@ -154,7 +216,7 @@ namespace DemosConsola {
                     break;
             }
 
-            IRepositorio dao;
+            IRepositorio<Persona, int> dao;
 #if DEBUG
             dao = new PersonaMockRepositorio();
 #else

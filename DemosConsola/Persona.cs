@@ -79,13 +79,23 @@ namespace DemosConsola.Entidades {
         public abstract bool EsValido();
         public virtual string QueEres { get { return "Soy una persona"; } }
 
-        protected int Edad { 
-            get => edad; 
+        protected int Edad {
+            get => edad;
             set {
                 if (edad == value) return;
-               if (edad < 0)
+                if (edad < 0)
                     throw new Exception("No puede ser negativa.");
-                edad = value; 
+                edad = value;
+            }
+        }
+
+        public DateTime FechaNacimieto { 
+            get => fechaNacimieto; 
+            set {
+                if (DateTime.Today.CompareTo(value) < 0)
+                    throw new Exception("No acepta fechas futuras");
+                fechaNacimieto = value; 
+                // edad = DateTime.Today.date()
             } 
         }
 
@@ -98,9 +108,15 @@ namespace DemosConsola.Entidades {
 
         protected virtual bool VoyAGuardar() { return true; }
         protected virtual void HeGuardado() { }
+
+        //public static Persona operator + (Persona p1, Persona p2) {
+        //    var bebe = new Persona();
+        //    return bebe;
+        //}
+
     }
 
-    public partial class Profesor: Persona {
+    public partial class Profesor : Persona {
         public Decimal Salario { get; set; }
 
         protected override bool VoyAGuardar() {
@@ -118,19 +134,45 @@ namespace DemosConsola.Entidades {
             return tratamiento + " " + base.dameNombre() + " " + Sexo;
         }
 
-        public override string QueEres { get { return "Soy un profesor";  } }
+        public override string QueEres { get { return "Soy un profesor"; } }
     }
 
-    public class ProfesoEmerito: Profesor {
+    public class ProfesoEmerito : Profesor {
         public override bool EsValido() {
             Edad = -1;
             return Edad > 67 && base.EsValido();
         }
     }
     public class Alumno : Persona {
+        private List<String> asignaturas;
+
         public Decimal Nota { get; set; } = 0;
 
         public new string QueEres { get { return "Soy un alumno"; } }
+
+        public List<string> Asignaturas { 
+            get => asignaturas; 
+            set => asignaturas = value; 
+        }
+        public string this[int indice] {
+            get {
+                return asignaturas[indice];
+            }
+            set {
+                if (asignaturas == null)
+                    asignaturas = new List<string>();
+                if (asignaturas.Count <= indice)
+                    asignaturas.Add(value);
+                else
+                    asignaturas[indice] = value;
+            }
+        }
+        public string this[int indice, string algo] {
+            get {
+                return asignaturas[indice] + algo;
+            }
+            
+        }
 
         public override bool EsValido() {
             throw new NotImplementedException();
