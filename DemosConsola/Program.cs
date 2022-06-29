@@ -10,6 +10,28 @@ namespace DemosConsola {
 #else
     class Program {
 #endif
+
+        static void Main(string[] args) {
+            Persona p; // = new Persona();
+            var a = new Alumno() { Nombre = "Alumno" };
+            Console.WriteLine($"{a.dameNombre()} {a.QueEres}");
+            p = new Profesor() { Nombre = "Profe", Sexo = "no binario" };
+            Console.WriteLine($"{p.dameNombre()} {p.QueEres} {(p as Profesor).QueEres}");
+            p.dameNombre();
+            // var bebe = a.EsMayor(p); // a > p
+            //if (p.EsValido()) {
+
+            //}
+            if (p is Profesor) {
+                var profe = p as Profesor;
+                profe.DarClase();
+            } else if (p is Alumno alum) {
+                alum.HacerExamen();
+            } else // if(p is Persona) 
+                {
+
+            }
+        }
         //public enum DiasDeLaSemana {
         //    Lunes = 1, Martes = 3, Miercoles, Jueves, Viernes, Sabado, Domingo
         //}
@@ -35,17 +57,17 @@ namespace DemosConsola {
             public int Y { get { return y; } }
         }
 
-        public class Contenedor: ICloneable {
+        public class Contenedor : ICloneable {
             private Dummy privado = new() { Valor = 888 };
             private Punto punto = new Punto(10, 20);
 
-            public Punto Punto {  get { return punto; } }
+            public Punto Punto { get { return punto; } }
 
-            public int DameDummyValor() { return privado.Valor;  }
-            public void PonDummyValor(int valor) { privado.Valor = valor;  }
+            public int DameDummyValor() { return privado.Valor; }
+            public void PonDummyValor(int valor) { privado.Valor = valor; }
 
-            public Dummy DameDummy() { return privado.Clone() as Dummy;  }
-            public Punto DamePunto() { return punto;  }
+            public Dummy DameDummy() { return privado.Clone() as Dummy; }
+            public Punto DamePunto() { return punto; }
 
             public object Clone() {
                 var rslt = base.MemberwiseClone() as Contenedor;
@@ -54,7 +76,7 @@ namespace DemosConsola {
             }
         }
 
-        public class Dummy: ICloneable {
+        public class Dummy : ICloneable {
             /// <summary>
             /// 
             /// </summary>
@@ -79,12 +101,12 @@ namespace DemosConsola {
                 porReferencia = new() { Valor = 123 };
             deSalida = new() { Valor = 777 };
         }
-        static public void Metodo(int obligatorio, int porDefecto=10, int otroParametro=3) {
+        static public void Metodo(int obligatorio, int porDefecto = 10, int otroParametro = 3) {
         }
         static public void Metodo(string obligatorio, params int[] resto) {
         }
 
-        static void Main(string[] args) {
+        static void Referencias(string[] args) {
             Metodo(obligatorio: 4, otroParametro: 4);
             Metodo("", 3, 3, 4, 1);
             var c = new Contenedor();
@@ -139,26 +161,26 @@ namespace DemosConsola {
             dao = new PersonaRepositorio();
 #endif
             try {
-                Console.WriteLine($"Personas: {Persona.NumPersonas}");
-                using var p = new Persona(1, "x", "x", 18);
-                Console.WriteLine(p.dameNombre());
-                p.ponNombre("Pepito");
-                //p.nombre = null;
-                //p.ponNombre(null);
-                //p.Nombre = null;
-                // p.NombreCompleto = "";
-                Console.WriteLine($"Personas: {Persona.NumPersonas}");
-                using var pp = new Persona { Nombre = "Pepe", Sexo = "M" };
-                Console.WriteLine($"Personas: {Persona.NumPersonas}");
-                var x = p.otraMayoria;
-                // Persona.MAYORIA_DE_EDAD
-                // p.Sexos = "N";
-                Console.WriteLine(p.NombreCompleto);
-                Console.WriteLine(p.dameNombre().Length);
-                Console.WriteLine("Tengo una persona");
-                System.GC.Collect();
-                System.GC.WaitForPendingFinalizers();
-                Console.WriteLine($"Fin Personas: {Persona.NumPersonas}");
+                //Console.WriteLine($"Personas: {Persona.NumPersonas}");
+                //using var p = new Persona(1, "x", "x", 18);
+                //Console.WriteLine(p.dameNombre());
+                //p.ponNombre("Pepito");
+                ////p.nombre = null;
+                ////p.ponNombre(null);
+                ////p.Nombre = null;
+                //// p.NombreCompleto = "";
+                //Console.WriteLine($"Personas: {Persona.NumPersonas}");
+                //using var pp = new Persona { Nombre = "Pepe", Sexo = "M" };
+                //Console.WriteLine($"Personas: {Persona.NumPersonas}");
+                //var x = p.otraMayoria;
+                //// Persona.MAYORIA_DE_EDAD
+                //// p.Sexos = "N";
+                //Console.WriteLine(p.NombreCompleto);
+                //Console.WriteLine(p.dameNombre().Length);
+                //Console.WriteLine("Tengo una persona");
+                //System.GC.Collect();
+                //System.GC.WaitForPendingFinalizers();
+                //Console.WriteLine($"Fin Personas: {Persona.NumPersonas}");
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);

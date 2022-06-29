@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DemosConsola.Entidades {
     public enum Color { Blanca, Negra, Amarillo }
-    public class Persona : IDisposable {
+    public abstract class Persona : IDisposable {
         private static int cont = 0;
         public const byte MAYORIA_DE_EDAD = 18;
         public readonly byte otraMayoria;
@@ -40,7 +40,7 @@ namespace DemosConsola.Entidades {
                 throw new Exception("Falta el nombre");
             this.nombre = nombre;
         }
-        public string dameNombre() {
+        public virtual string dameNombre() {
             if (nombre.Length > 5)
                 return nombre.Substring(0, 5);
             return nombre;
@@ -75,17 +75,73 @@ namespace DemosConsola.Entidades {
 
         private string sexo;
         public string Sexo { get { return sexo; } set { sexo = value; } }
+
+        public abstract bool EsValido();
+        public virtual string QueEres { get { return "Soy una persona"; } }
+
+        protected int Edad { 
+            get => edad; 
+            set {
+                if (edad == value) return;
+               if (edad < 0)
+                    throw new Exception("No puede ser negativa.");
+                edad = value; 
+            } 
+        }
+
+        public void Guardar() {
+            if (VoyAGuardar() && EsValido()) {
+                // guarda
+                HeGuardado();
+            }
+        }
+
+        protected virtual bool VoyAGuardar() { return true; }
+        protected virtual void HeGuardado() { }
     }
 
     public partial class Profesor: Persona {
         public Decimal Salario { get; set; }
 
-        public string QueEres { get { return "Soy un profesor";  } }
+        protected override bool VoyAGuardar() {
+            return Salario > 1000;
+        }
+        public void DarClase() { }
+
+        public override bool EsValido() {
+            throw new NotImplementedException();
+        }
+        public override string dameNombre() {
+            return base.dameNombre() + " " + Sexo;
+        }
+        public string dameNombre(string tratamiento) {
+            return tratamiento + " " + base.dameNombre() + " " + Sexo;
+        }
+
+        public override string QueEres { get { return "Soy un profesor";  } }
     }
 
+    public class ProfesoEmerito: Profesor {
+        public override bool EsValido() {
+            Edad = -1;
+            return Edad > 67 && base.EsValido();
+        }
+    }
     public class Alumno : Persona {
         public Decimal Nota { get; set; } = 0;
 
-        public string QueEres { get { return "Soy un alumno"; } }
+        public new string QueEres { get { return "Soy un alumno"; } }
+
+        public override bool EsValido() {
+            throw new NotImplementedException();
+        }
+
+        public void HacerExamen() { }
+    }
+
+    public class Empleado : Persona {
+        public override bool EsValido() {
+            throw new NotImplementedException();
+        }
     }
 }

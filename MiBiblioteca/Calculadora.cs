@@ -35,6 +35,12 @@ namespace MiBiblioteca {
         public long Suma(long a, long b) { //b
             return a + b;
         }
+        public long Suma(string a, string b) { //a
+            return Suma(long.Parse(a), long.Parse(b));
+        }
+        public long Suma(string a) { //a
+            return Suma(long.Parse(a), long.Parse(a));
+        }
         #endregion
     }
 
