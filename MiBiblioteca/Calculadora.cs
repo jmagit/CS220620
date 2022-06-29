@@ -89,6 +89,9 @@ namespace MiBiblioteca {
     }
 
     public class CalculadoraCientifica: Calculadora, ICloneable {
+        public CalculadoraCientifica(): base(10) {
+
+        }
         public object Clone() {
             throw new NotImplementedException();
         }

@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DemosConsola.Entidades {
     public enum Color { Blanca, Negra, Amarillo }
+
+    public class EdadChangingEventArg : EventArgs {
+        public int NuevaEdad { get; init; }
+        public bool Cancel { get; set; } = false;
+
+    }
+
     public abstract class Persona : IDisposable {
         private static int cont = 0;
         public const byte MAYORIA_DE_EDAD = 18;
@@ -15,6 +22,13 @@ namespace DemosConsola.Entidades {
         private int edad = 18;
         private DateTime fechaNacimieto;
 
+        public event Action<object, EdadChangingEventArg> EdadChanging;
+
+        protected virtual void OnEdadChanging(EdadChangingEventArg e) {
+            if (EdadChanging != null)
+                EdadChanging(this, e);
+        }
+
         public Persona() {
             cont++;
         }
@@ -23,7 +37,7 @@ namespace DemosConsola.Entidades {
             if (string.IsNullOrWhiteSpace(nombre))
                 throw new Exception("Falta el nombre");
             if (string.IsNullOrWhiteSpace(apellidos))
-                throw new Exception("Falta el apellidos");
+                throw new CursoException("Falta el apellidos");
             this.id = id;
             this.nombre = nombre;
             this.apellidos = apellidos;
@@ -57,7 +71,7 @@ namespace DemosConsola.Entidades {
             }
             set {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new Exception("Falta el nombre");
+                    throw new CursoException("Falta el nombre");
                 nombre = value;
             }
         }
@@ -79,7 +93,7 @@ namespace DemosConsola.Entidades {
         public abstract bool EsValido();
         public virtual string QueEres { get { return "Soy una persona"; } }
 
-        protected int Edad {
+        public int Edad {
             get => edad;
             set {
                 if (edad == value) return;
@@ -93,9 +107,13 @@ namespace DemosConsola.Entidades {
             get => fechaNacimieto; 
             set {
                 if (DateTime.Today.CompareTo(value) < 0)
-                    throw new Exception("No acepta fechas futuras");
-                fechaNacimieto = value; 
-                // edad = DateTime.Today.date()
+                    throw new CursoException("No acepta fechas futuras");
+                var nuevaEdad = DateTime.Today.Year - value.Year - (DateTime.Today.DayOfYear < value.DayOfYear ? 1 : 0);
+                var e = new EdadChangingEventArg() { NuevaEdad = nuevaEdad };
+                OnEdadChanging(e);
+                if (e.Cancel) return;
+                fechaNacimieto = value;
+                edad = nuevaEdad;
             } 
         }
 

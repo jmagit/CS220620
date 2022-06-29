@@ -13,47 +13,85 @@ namespace DemosConsola {
 #endif
 
         static void Main(string[] args) {
-            List<Persona> list = new List<Persona>();
-            OperacionBinaria op;
-
-            var c = new Calculadora();
-            Func<int, int, int> op2 = c.Suma;
-            Func<int, int> unaria = c.CambiaSigno;
-            Func<string, string, bool> op3;
-            Action<int, int, int> pro;
-
-            //op = c.Suma;
-            //// ...
-            //Console.WriteLine(op(2, 2));
-            //op = c.Resta;
-            //Console.WriteLine(op(2, 2));
-            Calcula(c.Suma);
-            Calcula(c.Resta);
-            op = delegate (int i, int j) { return i * j; };
-            op = (i, j) => i * j;
-            op = (i, j) => {
-                // ...
-                return i* j;
+            var cad = "algo";
+            int i = 4;
+            i.Positivo();
+            cad.EstaRellena();
+            ValidarCadenas.EstaRellena(cad);
+            cad.MaxLenght(15);
+            var a = new Alumno() { Nombre = "Alumno", [0] = "Programación", FechaNacimieto = new DateTime(1999, 1, 1) };
+            Action<object, EdadChangingEventArg> ce = (sender, e) => {
+                Console.WriteLine($"Actual: {(sender as Persona).Edad} Nueva edad {e.NuevaEdad}");
+                if (e.NuevaEdad > 67)
+                    e.Cancel = true;
             };
-            Console.WriteLine(op(3, 2));
+            a.EdadChanging += ce;
+            a.EdadChanging += (sender, e) => {
+                Console.WriteLine($"Calculando media");
+            };
+            try {
+                a.FechaNacimieto = new DateTime(1940, 1, 1);
+                // ...
+            } catch (CursoException ex) {
+                // ...
+                throw ex;
 
-            //Calcula(delegate (int i, int j) { return i * j; });
-            //Calcula(c.QueHago('+'));
-            //Calcula(c.CambiaSigno);
-            var rslt = list
-                .Where(item => item.Nombre.StartsWith("P"))
-                .OrderBy(item => item.FechaNacimieto)
-                //.Select(item => item.Nombre)
-                .Select(delegate(Persona item) { return item.Nombre; })
-                .Skip(10).Take(5);
+            } catch (Exception ex) {
+                // ...
+                throw new CursoException("dddd", ex);
+            } finally {
+                // ...
+            }
+            Console.WriteLine($"Final: {a.Edad}");
+            a.EdadChanging -= ce;
+            a.FechaNacimieto = new DateTime(1940, 1, 1);
+            Console.WriteLine($"Final: {a.Edad}");
 
+            //List<Persona> list = new List<Persona>();
+            //OperacionBinaria op;
+
+            //var c = new Calculadora();
+            //Func<int, int, int> op2 = c.Suma;
+            //Func<int, int> unaria = c.CambiaSigno;
+            //Func<string, string, bool> op3;
+            //Action<int, int, int> pro;
+
+            ////op = c.Suma;
+            ////// ...
+            ////Console.WriteLine(op(2, 2));
+            ////op = c.Resta;
+            ////Console.WriteLine(op(2, 2));
+            //Calcula(c.Suma);
+            //Calcula(c.Resta);
+            //op = delegate (int i, int j) { return i * j; };
+            //op = (i, j) => i * j;
+            //op = (i, j) => {
+            //    // ...
+            //    return i* j;
+            //};
+            //Console.WriteLine(op(3, 2));
+
+            ////Calcula(delegate (int i, int j) { return i * j; });
+            ////Calcula(c.QueHago('+'));
+            ////Calcula(c.CambiaSigno);
+            //var rslt = list
+            //    .Where(item => item.Nombre.StartsWith("P"))
+            //    .OrderBy(item => item.FechaNacimieto)
+            //    //.Select(item => item.Nombre)
+            //    .Select(delegate(Persona item) { return item.Nombre; })
+            //    .Skip(10).Take(5);
+
+        }
+
+        private static void A_EdadChanging(object arg1, EdadChangingEventArg arg2) {
+            throw new NotImplementedException();
         }
 
         static void Calcula(OperacionBinaria op) {
             Console.WriteLine(op(2, 2));
         }
 
-            static void Genericos(string[] args) {
+        static void Genericos(string[] args) {
             var ele = new Elemento<int, string>();
             var ele2 = new Elemento<string, char>();
             var t1 = ele.GetType();
