@@ -4,6 +4,2666 @@
         <name>DemosConsola</name>
     </assembly>
     <members>
+        <member name="T:DemosConsola.Entidades.Address">
+            <summary>
+            Street address information for customers, employees, and vendors.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.AddressId">
+            <summary>
+            Primary key for Address records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.AddressLine1">
+            <summary>
+            First street address line.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.AddressLine2">
+            <summary>
+            Second street address line.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.City">
+            <summary>
+            Name of the city.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.StateProvinceId">
+            <summary>
+            Unique identification number for the state or province. Foreign key to StateProvince table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.PostalCode">
+            <summary>
+            Postal code for the street address.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Address.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.AddressType">
+            <summary>
+            Types of addresses stored in the Address table. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.AddressType.AddressTypeId">
+            <summary>
+            Primary key for AddressType records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.AddressType.Name">
+            <summary>
+            Address type description. For example, Billing, Home, or Shipping.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.AddressType.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.AddressType.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.BillOfMaterial">
+            <summary>
+            Items required to make bicycles and bicycle subassemblies. It identifies the heirarchical relationship between a parent product and its components.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.BillOfMaterialsId">
+            <summary>
+            Primary key for BillOfMaterials records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.ProductAssemblyId">
+            <summary>
+            Parent product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.ComponentId">
+            <summary>
+            Component identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.StartDate">
+            <summary>
+            Date the component started being used in the assembly item.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.EndDate">
+            <summary>
+            Date the component stopped being used in the assembly item.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.UnitMeasureCode">
+            <summary>
+            Standard code identifying the unit of measure for the quantity.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.Bomlevel">
+            <summary>
+            Indicates the depth the component is from its parent (AssemblyID).
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.PerAssemblyQty">
+            <summary>
+            Quantity of the component needed to create the assembly.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BillOfMaterial.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.BusinessEntity">
+            <summary>
+            Source of the ID that connects vendors, customers, and employees with address and contact information.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntity.BusinessEntityId">
+            <summary>
+            Primary key for all customers, vendors, and employees.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntity.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntity.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.BusinessEntityAddress">
+            <summary>
+            Cross-reference table mapping customers, vendors, and employees to their addresses.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityAddress.BusinessEntityId">
+            <summary>
+            Primary key. Foreign key to BusinessEntity.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityAddress.AddressId">
+            <summary>
+            Primary key. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityAddress.AddressTypeId">
+            <summary>
+            Primary key. Foreign key to AddressType.AddressTypeID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityAddress.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityAddress.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.BusinessEntityContact">
+            <summary>
+            Cross-reference table mapping stores, vendors, and employees to people
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityContact.BusinessEntityId">
+            <summary>
+            Primary key. Foreign key to BusinessEntity.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityContact.PersonId">
+            <summary>
+            Primary key. Foreign key to Person.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityContact.ContactTypeId">
+            <summary>
+            Primary key.  Foreign key to ContactType.ContactTypeID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityContact.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.BusinessEntityContact.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ContactType">
+            <summary>
+            Lookup table containing the types of business entity contacts.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ContactType.ContactTypeId">
+            <summary>
+            Primary key for ContactType records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ContactType.Name">
+            <summary>
+            Contact type description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ContactType.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.CountryRegion">
+            <summary>
+            Lookup table containing the ISO standard codes for countries and regions.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CountryRegion.CountryRegionCode">
+            <summary>
+            ISO standard code for countries and regions.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CountryRegion.Name">
+            <summary>
+            Country or region name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CountryRegion.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.CountryRegionCurrency">
+            <summary>
+            Cross-reference table mapping ISO currency codes to a country or region.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CountryRegionCurrency.CountryRegionCode">
+            <summary>
+            ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CountryRegionCurrency.CurrencyCode">
+            <summary>
+            ISO standard currency code. Foreign key to Currency.CurrencyCode.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CountryRegionCurrency.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.CreditCard">
+            <summary>
+            Customer credit card information.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CreditCard.CreditCardId">
+            <summary>
+            Primary key for CreditCard records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CreditCard.CardType">
+            <summary>
+            Credit card name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CreditCard.CardNumber">
+            <summary>
+            Credit card number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CreditCard.ExpMonth">
+            <summary>
+            Credit card expiration month.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CreditCard.ExpYear">
+            <summary>
+            Credit card expiration year.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CreditCard.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Culture">
+            <summary>
+            Lookup table containing the languages in which some AdventureWorks data is stored.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Culture.CultureId">
+            <summary>
+            Primary key for Culture records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Culture.Name">
+            <summary>
+            Culture description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Culture.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Currency">
+            <summary>
+            Lookup table containing standard ISO currencies.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Currency.CurrencyCode">
+            <summary>
+            The ISO code for the Currency.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Currency.Name">
+            <summary>
+            Currency name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Currency.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.CurrencyRate">
+            <summary>
+            Currency exchange rates.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.CurrencyRateId">
+            <summary>
+            Primary key for CurrencyRate records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.CurrencyRateDate">
+            <summary>
+            Date and time the exchange rate was obtained.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.FromCurrencyCode">
+            <summary>
+            Exchange rate was converted from this currency code.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.ToCurrencyCode">
+            <summary>
+            Exchange rate was converted to this currency code.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.AverageRate">
+            <summary>
+            Average exchange rate for the day.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.EndOfDayRate">
+            <summary>
+            Final exchange rate for the day.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.CurrencyRate.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Customer">
+            <summary>
+            Current customer information. Also see the Person and Store tables.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.CustomerId">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.PersonId">
+            <summary>
+            Foreign key to Person.BusinessEntityID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.StoreId">
+            <summary>
+            Foreign key to Store.BusinessEntityID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.TerritoryId">
+            <summary>
+            ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.AccountNumber">
+            <summary>
+            Unique number identifying the customer assigned by the accounting system.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Customer.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Department">
+            <summary>
+            Lookup table containing the departments within the Adventure Works Cycles company.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Department.DepartmentId">
+            <summary>
+            Primary key for Department records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Department.Name">
+            <summary>
+            Name of the department.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Department.GroupName">
+            <summary>
+            Name of the group to which the department belongs.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Department.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.EmailAddress">
+            <summary>
+            Where to send a person email.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmailAddress.BusinessEntityId">
+            <summary>
+            Primary key. Person associated with this email address.  Foreign key to Person.BusinessEntityID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmailAddress.EmailAddressId">
+            <summary>
+            Primary key. ID of this email address.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmailAddress.EmailAddress1">
+            <summary>
+            E-mail address for the person.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmailAddress.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmailAddress.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Employee">
+            <summary>
+            Employee information such as salary, department, and title.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.BusinessEntityId">
+            <summary>
+            Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.NationalIdnumber">
+            <summary>
+            Unique national identification number such as a social security number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.LoginId">
+            <summary>
+            Network login.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.OrganizationLevel">
+            <summary>
+            The depth of the employee in the corporate hierarchy.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.JobTitle">
+            <summary>
+            Work title such as Buyer or Sales Representative.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.BirthDate">
+            <summary>
+            Date of birth.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.MaritalStatus">
+            <summary>
+            M = Married, S = Single
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.Gender">
+            <summary>
+            M = Male, F = Female
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.HireDate">
+            <summary>
+            Employee hired on this date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.SalariedFlag">
+            <summary>
+            Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.VacationHours">
+            <summary>
+            Number of available vacation hours.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.SickLeaveHours">
+            <summary>
+            Number of available sick leave hours.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.CurrentFlag">
+            <summary>
+            0 = Inactive, 1 = Active
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Employee.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.EmployeeDepartmentHistory">
+            <summary>
+            Employee department transfers.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeeDepartmentHistory.BusinessEntityId">
+            <summary>
+            Employee identification number. Foreign key to Employee.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeeDepartmentHistory.DepartmentId">
+            <summary>
+            Department in which the employee worked including currently. Foreign key to Department.DepartmentID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeeDepartmentHistory.ShiftId">
+            <summary>
+            Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeeDepartmentHistory.StartDate">
+            <summary>
+            Date the employee started work in the department.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeeDepartmentHistory.EndDate">
+            <summary>
+            Date the employee left the department. NULL = Current department.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeeDepartmentHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.EmployeePayHistory">
+            <summary>
+            Employee pay history.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeePayHistory.BusinessEntityId">
+            <summary>
+            Employee identification number. Foreign key to Employee.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeePayHistory.RateChangeDate">
+            <summary>
+            Date the change in pay is effective
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeePayHistory.Rate">
+            <summary>
+            Salary hourly rate.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeePayHistory.PayFrequency">
+            <summary>
+            1 = Salary received monthly, 2 = Salary received biweekly
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.EmployeePayHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Illustration">
+            <summary>
+            Bicycle assembly diagrams.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Illustration.IllustrationId">
+            <summary>
+            Primary key for Illustration records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Illustration.Diagram">
+            <summary>
+            Illustrations used in manufacturing instructions. Stored as XML.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Illustration.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.JobCandidate">
+            <summary>
+            Résumés submitted to Human Resources by job applicants.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.JobCandidate.JobCandidateId">
+            <summary>
+            Primary key for JobCandidate records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.JobCandidate.BusinessEntityId">
+            <summary>
+            Employee identification number if applicant was hired. Foreign key to Employee.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.JobCandidate.Resume">
+            <summary>
+            Résumé in XML format.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.JobCandidate.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Location">
+            <summary>
+            Product inventory and manufacturing locations.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Location.LocationId">
+            <summary>
+            Primary key for Location records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Location.Name">
+            <summary>
+            Location description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Location.CostRate">
+            <summary>
+            Standard hourly cost of the manufacturing location.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Location.Availability">
+            <summary>
+            Work capacity (in hours) of the manufacturing location.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Location.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Password">
+            <summary>
+            One way hashed authentication information
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Password.PasswordHash">
+            <summary>
+            Password for the e-mail account.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Password.PasswordSalt">
+            <summary>
+            Random value concatenated with the password string before the password is hashed.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Password.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Password.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Person">
+            <summary>
+            Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.BusinessEntityId">
+            <summary>
+            Primary key for Person records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.PersonType">
+            <summary>
+            Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.NameStyle">
+            <summary>
+            0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.Title">
+            <summary>
+            A courtesy title. For example, Mr. or Ms.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.FirstName">
+            <summary>
+            First name of the person.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.MiddleName">
+            <summary>
+            Middle name or middle initial of the person.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.LastName">
+            <summary>
+            Last name of the person.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.Suffix">
+            <summary>
+            Surname suffix. For example, Sr. or Jr.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.EmailPromotion">
+            <summary>
+            0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.AdditionalContactInfo">
+            <summary>
+            Additional contact information about the person stored in xml format. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.Demographics">
+            <summary>
+            Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Person.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.PersonCreditCard">
+            <summary>
+            Cross-reference table mapping people to their credit card information in the CreditCard table. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonCreditCard.BusinessEntityId">
+            <summary>
+            Business entity identification number. Foreign key to Person.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonCreditCard.CreditCardId">
+            <summary>
+            Credit card identification number. Foreign key to CreditCard.CreditCardID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonCreditCard.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.PersonPhone">
+            <summary>
+            Telephone number and type of a person.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonPhone.BusinessEntityId">
+            <summary>
+            Business entity identification number. Foreign key to Person.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonPhone.PhoneNumber">
+            <summary>
+            Telephone number identification number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonPhone.PhoneNumberTypeId">
+            <summary>
+            Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PersonPhone.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.PhoneNumberType">
+            <summary>
+            Type of phone number of a person.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PhoneNumberType.PhoneNumberTypeId">
+            <summary>
+            Primary key for telephone number type records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PhoneNumberType.Name">
+            <summary>
+            Name of the telephone number type
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PhoneNumberType.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Product">
+            <summary>
+            Products sold or used in the manfacturing of sold products.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ProductId">
+            <summary>
+            Primary key for Product records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Name">
+            <summary>
+            Name of the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ProductNumber">
+            <summary>
+            Unique product identification number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.MakeFlag">
+            <summary>
+            0 = Product is purchased, 1 = Product is manufactured in-house.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.FinishedGoodsFlag">
+            <summary>
+            0 = Product is not a salable item. 1 = Product is salable.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Color">
+            <summary>
+            Product color.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.SafetyStockLevel">
+            <summary>
+            Minimum inventory quantity. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ReorderPoint">
+            <summary>
+            Inventory level that triggers a purchase order or work order. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.StandardCost">
+            <summary>
+            Standard cost of the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ListPrice">
+            <summary>
+            Selling price.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Size">
+            <summary>
+            Product size.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.SizeUnitMeasureCode">
+            <summary>
+            Unit of measure for Size column.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.WeightUnitMeasureCode">
+            <summary>
+            Unit of measure for Weight column.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Weight">
+            <summary>
+            Product weight.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.DaysToManufacture">
+            <summary>
+            Number of days required to manufacture the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ProductLine">
+            <summary>
+            R = Road, M = Mountain, T = Touring, S = Standard
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Class">
+            <summary>
+            H = High, M = Medium, L = Low
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Style">
+            <summary>
+            W = Womens, M = Mens, U = Universal
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ProductSubcategoryId">
+            <summary>
+            Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ProductModelId">
+            <summary>
+            Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.SellStartDate">
+            <summary>
+            Date the product was available for sale.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.SellEndDate">
+            <summary>
+            Date the product was no longer available for sale.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.DiscontinuedDate">
+            <summary>
+            Date the product was discontinued.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Product.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductCategory">
+            <summary>
+            High-level product categorization.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCategory.ProductCategoryId">
+            <summary>
+            Primary key for ProductCategory records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCategory.Name">
+            <summary>
+            Category description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCategory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCategory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductCostHistory">
+            <summary>
+            Changes in the cost of a product over time.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCostHistory.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCostHistory.StartDate">
+            <summary>
+            Product cost start date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCostHistory.EndDate">
+            <summary>
+            Product cost end date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCostHistory.StandardCost">
+            <summary>
+            Standard cost of the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductCostHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductDescription">
+            <summary>
+            Product descriptions in several languages.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductDescription.ProductDescriptionId">
+            <summary>
+            Primary key for ProductDescription records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductDescription.Description">
+            <summary>
+            Description of the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductDescription.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductDescription.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductInventory">
+            <summary>
+            Product inventory information.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.LocationId">
+            <summary>
+            Inventory location identification number. Foreign key to Location.LocationID. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.Shelf">
+            <summary>
+            Storage compartment within an inventory location.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.Bin">
+            <summary>
+            Storage container on a shelf in an inventory location.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.Quantity">
+            <summary>
+            Quantity of products in the inventory location.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductInventory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductListPriceHistory">
+            <summary>
+            Changes in the list price of a product over time.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductListPriceHistory.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductListPriceHistory.StartDate">
+            <summary>
+            List price start date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductListPriceHistory.EndDate">
+            <summary>
+            List price end date
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductListPriceHistory.ListPrice">
+            <summary>
+            Product list price.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductListPriceHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductModel">
+            <summary>
+            Product model classification.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModel.ProductModelId">
+            <summary>
+            Primary key for ProductModel records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModel.Name">
+            <summary>
+            Product model description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModel.CatalogDescription">
+            <summary>
+            Detailed product catalog information in xml format.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModel.Instructions">
+            <summary>
+            Manufacturing instructions in xml format.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModel.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModel.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductModelIllustration">
+            <summary>
+            Cross-reference table mapping product models and illustrations.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelIllustration.ProductModelId">
+            <summary>
+            Primary key. Foreign key to ProductModel.ProductModelID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelIllustration.IllustrationId">
+            <summary>
+            Primary key. Foreign key to Illustration.IllustrationID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelIllustration.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductModelProductDescriptionCulture">
+            <summary>
+            Cross-reference table mapping product descriptions and the language the description is written in.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelProductDescriptionCulture.ProductModelId">
+            <summary>
+            Primary key. Foreign key to ProductModel.ProductModelID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelProductDescriptionCulture.ProductDescriptionId">
+            <summary>
+            Primary key. Foreign key to ProductDescription.ProductDescriptionID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelProductDescriptionCulture.CultureId">
+            <summary>
+            Culture identification number. Foreign key to Culture.CultureID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductModelProductDescriptionCulture.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductPhoto">
+            <summary>
+            Product images.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductPhoto.ProductPhotoId">
+            <summary>
+            Primary key for ProductPhoto records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductPhoto.ThumbNailPhoto">
+            <summary>
+            Small image of the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductPhoto.ThumbnailPhotoFileName">
+            <summary>
+            Small image file name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductPhoto.LargePhoto">
+            <summary>
+            Large image of the product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductPhoto.LargePhotoFileName">
+            <summary>
+            Large image file name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductPhoto.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductProductPhoto">
+            <summary>
+            Cross-reference table mapping products and product photos.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductProductPhoto.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductProductPhoto.ProductPhotoId">
+            <summary>
+            Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductProductPhoto.Primary">
+            <summary>
+            0 = Photo is not the principal image. 1 = Photo is the principal image.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductProductPhoto.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductReview">
+            <summary>
+            Customer reviews of products they have purchased.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.ProductReviewId">
+            <summary>
+            Primary key for ProductReview records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.ReviewerName">
+            <summary>
+            Name of the reviewer.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.ReviewDate">
+            <summary>
+            Date review was submitted.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.EmailAddress">
+            <summary>
+            Reviewer&apos;s e-mail address.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.Rating">
+            <summary>
+            Product rating given by the reviewer. Scale is 1 to 5 with 5 as the highest rating.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.Comments">
+            <summary>
+            Reviewer&apos;s comments
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductReview.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductSubcategory">
+            <summary>
+            Product subcategories. See ProductCategory table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductSubcategory.ProductSubcategoryId">
+            <summary>
+            Primary key for ProductSubcategory records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductSubcategory.ProductCategoryId">
+            <summary>
+            Product category identification number. Foreign key to ProductCategory.ProductCategoryID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductSubcategory.Name">
+            <summary>
+            Subcategory description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductSubcategory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductSubcategory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ProductVendor">
+            <summary>
+            Cross-reference table mapping vendors with the products they supply.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.ProductId">
+            <summary>
+            Primary key. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.BusinessEntityId">
+            <summary>
+            Primary key. Foreign key to Vendor.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.AverageLeadTime">
+            <summary>
+            The average span of time (in days) between placing an order with the vendor and receiving the purchased product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.StandardPrice">
+            <summary>
+            The vendor&apos;s usual selling price.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.LastReceiptCost">
+            <summary>
+            The selling price when last purchased.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.LastReceiptDate">
+            <summary>
+            Date the product was last received by the vendor.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.MinOrderQty">
+            <summary>
+            The maximum quantity that should be ordered.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.MaxOrderQty">
+            <summary>
+            The minimum quantity that should be ordered.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.OnOrderQty">
+            <summary>
+            The quantity currently on order.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.UnitMeasureCode">
+            <summary>
+            The product&apos;s unit of measure.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ProductVendor.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.PurchaseOrderDetail">
+            <summary>
+            Individual products associated with a specific purchase order. See PurchaseOrderHeader.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.PurchaseOrderId">
+            <summary>
+            Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.PurchaseOrderDetailId">
+            <summary>
+            Primary key. One line number per purchased product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.DueDate">
+            <summary>
+            Date the product is expected to be received.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.OrderQty">
+            <summary>
+            Quantity ordered.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.UnitPrice">
+            <summary>
+            Vendor&apos;s selling price of a single product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.LineTotal">
+            <summary>
+            Per product subtotal. Computed as OrderQty * UnitPrice.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.ReceivedQty">
+            <summary>
+            Quantity actually received from the vendor.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.RejectedQty">
+            <summary>
+            Quantity rejected during inspection.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.StockedQty">
+            <summary>
+            Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderDetail.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.PurchaseOrderHeader">
+            <summary>
+            General purchase order information. See PurchaseOrderDetail.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.PurchaseOrderId">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.RevisionNumber">
+            <summary>
+            Incremental number to track changes to the purchase order over time.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.Status">
+            <summary>
+            Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.EmployeeId">
+            <summary>
+            Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.VendorId">
+            <summary>
+            Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.ShipMethodId">
+            <summary>
+            Shipping method. Foreign key to ShipMethod.ShipMethodID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.OrderDate">
+            <summary>
+            Purchase order creation date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.ShipDate">
+            <summary>
+            Estimated shipment date from the vendor.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.SubTotal">
+            <summary>
+            Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.TaxAmt">
+            <summary>
+            Tax amount.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.Freight">
+            <summary>
+            Shipping cost.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.TotalDue">
+            <summary>
+            Total due to vendor. Computed as Subtotal + TaxAmt + Freight.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.PurchaseOrderHeader.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesOrderDetail">
+            <summary>
+            Individual products associated with a specific sales order. See SalesOrderHeader.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.SalesOrderId">
+            <summary>
+            Primary key. Foreign key to SalesOrderHeader.SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.SalesOrderDetailId">
+            <summary>
+            Primary key. One incremental unique number per product sold.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.CarrierTrackingNumber">
+            <summary>
+            Shipment tracking number supplied by the shipper.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.OrderQty">
+            <summary>
+            Quantity ordered per product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.ProductId">
+            <summary>
+            Product sold to customer. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.SpecialOfferId">
+            <summary>
+            Promotional code. Foreign key to SpecialOffer.SpecialOfferID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.UnitPrice">
+            <summary>
+            Selling price of a single product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.UnitPriceDiscount">
+            <summary>
+            Discount amount.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.LineTotal">
+            <summary>
+            Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderDetail.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesOrderHeader">
+            <summary>
+            General sales order information.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.SalesOrderId">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.RevisionNumber">
+            <summary>
+            Incremental number to track changes to the sales order over time.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.OrderDate">
+            <summary>
+            Dates the sales order was created.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.DueDate">
+            <summary>
+            Date the order is due to the customer.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.ShipDate">
+            <summary>
+            Date the order was shipped to the customer.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.Status">
+            <summary>
+            Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.OnlineOrderFlag">
+            <summary>
+            0 = Order placed by sales person. 1 = Order placed online by customer.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.SalesOrderNumber">
+            <summary>
+            Unique sales order identification number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.PurchaseOrderNumber">
+            <summary>
+            Customer purchase order number reference. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.AccountNumber">
+            <summary>
+            Financial accounting number reference.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.CustomerId">
+            <summary>
+            Customer identification number. Foreign key to Customer.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.SalesPersonId">
+            <summary>
+            Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.TerritoryId">
+            <summary>
+            Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.BillToAddressId">
+            <summary>
+            Customer billing address. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.ShipToAddressId">
+            <summary>
+            Customer shipping address. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.ShipMethodId">
+            <summary>
+            Shipping method. Foreign key to ShipMethod.ShipMethodID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.CreditCardId">
+            <summary>
+            Credit card identification number. Foreign key to CreditCard.CreditCardID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.CreditCardApprovalCode">
+            <summary>
+            Approval code provided by the credit card company.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.CurrencyRateId">
+            <summary>
+            Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.SubTotal">
+            <summary>
+            Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.TaxAmt">
+            <summary>
+            Tax amount.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.Freight">
+            <summary>
+            Shipping cost.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.TotalDue">
+            <summary>
+            Total due from customer. Computed as Subtotal + TaxAmt + Freight.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.Comment">
+            <summary>
+            Sales representative comments.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeader.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesOrderHeaderSalesReason">
+            <summary>
+            Cross-reference table mapping sales orders to sales reason codes.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeaderSalesReason.SalesOrderId">
+            <summary>
+            Primary key. Foreign key to SalesOrderHeader.SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeaderSalesReason.SalesReasonId">
+            <summary>
+            Primary key. Foreign key to SalesReason.SalesReasonID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesOrderHeaderSalesReason.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesPerson">
+            <summary>
+            Sales representative current information.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.BusinessEntityId">
+            <summary>
+            Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.TerritoryId">
+            <summary>
+            Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.SalesQuota">
+            <summary>
+            Projected yearly sales.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.Bonus">
+            <summary>
+            Bonus due if quota is met.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.CommissionPct">
+            <summary>
+            Commision percent received per sale.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.SalesYtd">
+            <summary>
+            Sales total year to date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.SalesLastYear">
+            <summary>
+            Sales total of previous year.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPerson.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesPersonQuotaHistory">
+            <summary>
+            Sales performance tracking.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPersonQuotaHistory.BusinessEntityId">
+            <summary>
+            Sales person identification number. Foreign key to SalesPerson.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPersonQuotaHistory.QuotaDate">
+            <summary>
+            Sales quota date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPersonQuotaHistory.SalesQuota">
+            <summary>
+            Sales quota amount.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPersonQuotaHistory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesPersonQuotaHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesReason">
+            <summary>
+            Lookup table of customer purchase reasons.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesReason.SalesReasonId">
+            <summary>
+            Primary key for SalesReason records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesReason.Name">
+            <summary>
+            Sales reason description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesReason.ReasonType">
+            <summary>
+            Category the sales reason belongs to.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesReason.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesTaxRate">
+            <summary>
+            Tax rate lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.SalesTaxRateId">
+            <summary>
+            Primary key for SalesTaxRate records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.StateProvinceId">
+            <summary>
+            State, province, or country/region the sales tax applies to.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.TaxType">
+            <summary>
+            1 = Tax applied to retail transactions, 2 = Tax applied to wholesale transactions, 3 = Tax applied to all sales (retail and wholesale) transactions.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.TaxRate">
+            <summary>
+            Tax rate amount.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.Name">
+            <summary>
+            Tax rate description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTaxRate.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesTerritory">
+            <summary>
+            Sales territory lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.TerritoryId">
+            <summary>
+            Primary key for SalesTerritory records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.Name">
+            <summary>
+            Sales territory description
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.CountryRegionCode">
+            <summary>
+            ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.Group">
+            <summary>
+            Geographic area to which the sales territory belong.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.SalesYtd">
+            <summary>
+            Sales in the territory year to date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.SalesLastYear">
+            <summary>
+            Sales in the territory the previous year.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.CostYtd">
+            <summary>
+            Business costs in the territory year to date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.CostLastYear">
+            <summary>
+            Business costs in the territory the previous year.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SalesTerritoryHistory">
+            <summary>
+            Sales representative transfers to other sales territories.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritoryHistory.BusinessEntityId">
+            <summary>
+            Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritoryHistory.TerritoryId">
+            <summary>
+            Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritoryHistory.StartDate">
+            <summary>
+            Primary key. Date the sales representive started work in the territory.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritoryHistory.EndDate">
+            <summary>
+            Date the sales representative left work in the territory.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritoryHistory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SalesTerritoryHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ScrapReason">
+            <summary>
+            Manufacturing failure reasons lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ScrapReason.ScrapReasonId">
+            <summary>
+            Primary key for ScrapReason records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ScrapReason.Name">
+            <summary>
+            Failure description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ScrapReason.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Shift">
+            <summary>
+            Work shift lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Shift.ShiftId">
+            <summary>
+            Primary key for Shift records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Shift.Name">
+            <summary>
+            Shift description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Shift.StartTime">
+            <summary>
+            Shift start time.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Shift.EndTime">
+            <summary>
+            Shift end time.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Shift.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ShipMethod">
+            <summary>
+            Shipping company lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShipMethod.ShipMethodId">
+            <summary>
+            Primary key for ShipMethod records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShipMethod.Name">
+            <summary>
+            Shipping company name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShipMethod.ShipBase">
+            <summary>
+            Minimum shipping charge.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShipMethod.ShipRate">
+            <summary>
+            Shipping charge per pound.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShipMethod.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShipMethod.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.ShoppingCartItem">
+            <summary>
+            Contains online customer orders until the order is submitted or cancelled.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShoppingCartItem.ShoppingCartItemId">
+            <summary>
+            Primary key for ShoppingCartItem records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShoppingCartItem.ShoppingCartId">
+            <summary>
+            Shopping cart identification number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShoppingCartItem.Quantity">
+            <summary>
+            Product quantity ordered.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShoppingCartItem.ProductId">
+            <summary>
+            Product ordered. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShoppingCartItem.DateCreated">
+            <summary>
+            Date the time the record was created.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.ShoppingCartItem.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SpecialOffer">
+            <summary>
+            Sale discounts lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.SpecialOfferId">
+            <summary>
+            Primary key for SpecialOffer records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.Description">
+            <summary>
+            Discount description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.DiscountPct">
+            <summary>
+            Discount precentage.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.Type">
+            <summary>
+            Discount type category.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.Category">
+            <summary>
+            Group the discount applies to such as Reseller or Customer.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.StartDate">
+            <summary>
+            Discount start date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.EndDate">
+            <summary>
+            Discount end date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.MinQty">
+            <summary>
+            Minimum discount percent allowed.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.MaxQty">
+            <summary>
+            Maximum discount percent allowed.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOffer.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.SpecialOfferProduct">
+            <summary>
+            Cross-reference table mapping products to special offer discounts.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOfferProduct.SpecialOfferId">
+            <summary>
+            Primary key for SpecialOfferProduct records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOfferProduct.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOfferProduct.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.SpecialOfferProduct.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.StateProvince">
+            <summary>
+            State and province lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.StateProvinceId">
+            <summary>
+            Primary key for StateProvince records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.StateProvinceCode">
+            <summary>
+            ISO standard state or province code.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.CountryRegionCode">
+            <summary>
+            ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. 
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.IsOnlyStateProvinceFlag">
+            <summary>
+            0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.Name">
+            <summary>
+            State or province description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.TerritoryId">
+            <summary>
+            ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.StateProvince.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Store">
+            <summary>
+            Customers (resellers) of Adventure Works products.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Store.BusinessEntityId">
+            <summary>
+            Primary key. Foreign key to Customer.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Store.Name">
+            <summary>
+            Name of the store.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Store.SalesPersonId">
+            <summary>
+            ID of the sales person assigned to the customer. Foreign key to SalesPerson.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Store.Demographics">
+            <summary>
+            Demographic informationg about the store such as the number of employees, annual sales and store type.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Store.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Store.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.TransactionHistory">
+            <summary>
+            Record of each purchase order, sales order, or work order transaction year to date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.TransactionId">
+            <summary>
+            Primary key for TransactionHistory records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.ReferenceOrderId">
+            <summary>
+            Purchase order, sales order, or work order identification number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.ReferenceOrderLineId">
+            <summary>
+            Line number associated with the purchase order, sales order, or work order.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.TransactionDate">
+            <summary>
+            Date and time of the transaction.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.TransactionType">
+            <summary>
+            W = WorkOrder, S = SalesOrder, P = PurchaseOrder
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.Quantity">
+            <summary>
+            Product quantity.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.ActualCost">
+            <summary>
+            Product cost.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.TransactionHistoryArchive">
+            <summary>
+            Transactions for previous years.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.TransactionId">
+            <summary>
+            Primary key for TransactionHistoryArchive records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.ReferenceOrderId">
+            <summary>
+            Purchase order, sales order, or work order identification number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.ReferenceOrderLineId">
+            <summary>
+            Line number associated with the purchase order, sales order, or work order.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.TransactionDate">
+            <summary>
+            Date and time of the transaction.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.TransactionType">
+            <summary>
+            W = Work Order, S = Sales Order, P = Purchase Order
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.Quantity">
+            <summary>
+            Product quantity.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.ActualCost">
+            <summary>
+            Product cost.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.TransactionHistoryArchive.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.UnitMeasure">
+            <summary>
+            Unit of measure lookup table.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.UnitMeasure.UnitMeasureCode">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.UnitMeasure.Name">
+            <summary>
+            Unit of measure description.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.UnitMeasure.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.Vendor">
+            <summary>
+            Companies from whom Adventure Works Cycles purchases parts or other goods.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.BusinessEntityId">
+            <summary>
+            Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.AccountNumber">
+            <summary>
+            Vendor account (identification) number.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.Name">
+            <summary>
+            Company name.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.CreditRating">
+            <summary>
+            1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.PreferredVendorStatus">
+            <summary>
+            0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.ActiveFlag">
+            <summary>
+            0 = Vendor no longer used. 1 = Vendor is actively used.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.PurchasingWebServiceUrl">
+            <summary>
+            Vendor URL.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.Vendor.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.WorkOrder">
+            <summary>
+            Manufacturing work orders.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.WorkOrderId">
+            <summary>
+            Primary key for WorkOrder records.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.OrderQty">
+            <summary>
+            Product quantity to build.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.StockedQty">
+            <summary>
+            Quantity built and put in inventory.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.ScrappedQty">
+            <summary>
+            Quantity that failed inspection.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.StartDate">
+            <summary>
+            Work order start date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.EndDate">
+            <summary>
+            Work order end date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.DueDate">
+            <summary>
+            Work order due date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.ScrapReasonId">
+            <summary>
+            Reason for inspection failure.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrder.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.Entidades.WorkOrderRouting">
+            <summary>
+            Work order details.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.WorkOrderId">
+            <summary>
+            Primary key. Foreign key to WorkOrder.WorkOrderID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ProductId">
+            <summary>
+            Primary key. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.OperationSequence">
+            <summary>
+            Primary key. Indicates the manufacturing process sequence.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.LocationId">
+            <summary>
+            Manufacturing location where the part is processed. Foreign key to Location.LocationID.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ScheduledStartDate">
+            <summary>
+            Planned manufacturing start date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ScheduledEndDate">
+            <summary>
+            Planned manufacturing end date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ActualStartDate">
+            <summary>
+            Actual start date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ActualEndDate">
+            <summary>
+            Actual end date.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ActualResourceHrs">
+            <summary>
+            Number of manufacturing hours used.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.PlannedCost">
+            <summary>
+            Estimated manufacturing cost.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ActualCost">
+            <summary>
+            Actual manufacturing cost.
+            </summary>
+        </member>
+        <member name="P:DemosConsola.Entidades.WorkOrderRouting.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDSTableAdapters.ProductTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDSTableAdapters.ProductCategoryTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDSTableAdapters.vGetAllCategoriesTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDSTableAdapters.TableAdapterManager">
+             <summary>
+            TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+            </summary>
+        </member>
+        <member name="M:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.UpdateUpdatedRows(DemosConsola.ProductosDS,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Update rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.UpdateInsertedRows(DemosConsola.ProductosDS,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Insert rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.UpdateDeletedRows(DemosConsola.ProductosDS,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Delete rows in bottom-up order.
+            </summary>
+        </member>
+        <member name="M:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+            </summary>
+        </member>
+        <member name="M:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.UpdateAll(DemosConsola.ProductosDS)">
+             <summary>
+            Update all changes to the dataset.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.UpdateOrderOption">
+             <summary>
+            Update Order Option
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDSTableAdapters.TableAdapterManager.SelfReferenceComparer">
+             <summary>
+            Used to sort self-referenced table's rows
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.ProductDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.ProductCategoryDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.vGetAllCategoriesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.ProductRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.ProductCategoryRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.vGetAllCategoriesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.ProductRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.ProductCategoryRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:DemosConsola.ProductosDS.vGetAllCategoriesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
         <member name="P:DemosConsola.Program.Dummy.Valor">
             <summary>
             

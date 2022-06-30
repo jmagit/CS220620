@@ -4,6 +4,11 @@ using MiBiblioteca.Enumeraciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlTypes;
+using Microsoft.Data.SqlClient;
+using DemosConsola.ProductosDSTableAdapters;
 
 namespace DemosConsola {
 #if DEBUG
@@ -12,7 +17,74 @@ namespace DemosConsola {
     class Program {
 #endif
 
+        static void APelo() {
+            SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=AdventureWorksLT2017;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandText = "select * from SalesLT.Product";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection.Open();
+            var dr = cmd.ExecuteReader();
+            while(dr.Read()) {
+                Console.WriteLine(dr.GetString("Name"));
+            }
+            dr.Close();
+            cmd.Connection.Close();
+        }
+
+        static void conDataset() {
+            ProductosDS ds = new ProductosDS();
+            ProductTableAdapter da = new ProductTableAdapter();
+            //ProductTableAdapter daa = new ProductTableAdapter();
+            //da.Connection.Open();
+            //var tran = da.Connection.BeginTransaction();
+            //daa.Connection = da.Connection;
+            da.Fill(ds.Product);
+            foreach(ProductosDS.ProductRow row in ds.Product.Rows) {
+                Console.WriteLine(row.Name);
+            }
+            ds.Product[0].Name = ds.Product[0].Name.ToLower();
+            // ds.Product.RemoveProductRow(ds.Product[100]);
+
+            da.Update(ds.Product);
+        }
+
+        static void conORM() {
+            Data.AWContext db = new();
+            foreach(var p in db.Products.Where(o => o.Name.StartsWith("A")).OrderBy(o => o.ProductId).Take(5))
+                Console.WriteLine($"{p.ProductId} {p.Name}");
+        }
         static void Main(string[] args) {
+            // APelo();
+            // conDataset();
+            conORM();
+        }
+        static void consultas(string[] args) {
+            var lista = new List<Persona>();
+            bool salarioMinimo = true, paginado=false;
+            int page = 0, rows = 5;
+            // ...
+
+            var consulta = lista.Where(item => item is Profesor).Select(item => item as Profesor);
+            if (salarioMinimo)
+                consulta = consulta.Where(o => o.Salario > 1000);
+            if(paginado)
+                consulta = consulta.Skip(page * rows).Take(rows);
+            consulta = consulta.OrderBy(o => o.Salario);
+            // ...
+            //var rslt = consulta.ToList();
+            //var rslt = consulta.FirstOrDefault();
+            //if(rslt != null) {
+
+            //}
+            var sum = lista
+                .Where(item => item is Profesor)
+                .Select(o => (o as Profesor).Salario)
+                .Sum();
+            
+
+        }
+
+        static void Eventos(string[] args) {
             var cad = "algo";
             int i = 4;
             i.Positivo();
@@ -20,6 +92,7 @@ namespace DemosConsola {
             ValidarCadenas.EstaRellena(cad);
             cad.MaxLenght(15);
             var a = new Alumno() { Nombre = "Alumno", [0] = "Programación", FechaNacimieto = new DateTime(1999, 1, 1) };
+            var aa = new Alumno() { Nombre = "Alumno", [0] = "Programación", FechaNacimieto = new DateTime(1999, 1, 1) };
             Action<object, EdadChangingEventArg> ce = (sender, e) => {
                 Console.WriteLine($"Actual: {(sender as Persona).Edad} Nueva edad {e.NuevaEdad}");
                 if (e.NuevaEdad > 67)
@@ -29,6 +102,10 @@ namespace DemosConsola {
             a.EdadChanging += (sender, e) => {
                 Console.WriteLine($"Calculando media");
             };
+
+            if(a.Equals(aa)) {
+
+            }
             try {
                 a.FechaNacimieto = new DateTime(1940, 1, 1);
                 // ...
